@@ -1,349 +1,219 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yezzy · Portfólio</title>
-    <style>
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+// App.js
+import React from 'react';
 
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: #0a0e1a;
-            color: #e8edf5;
-            line-height: 1.6;
-            padding: 2rem 1rem;
-        }
+function App() {
+  return (
+    <div className="min-h-screen bg-[#0a0e1a] text-gray-200 font-sans">
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+      {/* ===== NAVBAR ===== */}
+      <nav className="max-w-6xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between border-b border-blue-900/40">
+        <h1 className="text-2xl font-bold text-blue-400 tracking-wide">Yezzy</h1>
+        <ul className="flex flex-wrap gap-6 text-sm font-medium text-gray-300">
+          <li><a href="#home" className="hover:text-blue-400 transition">Home</a></li>
+          <li><a href="#about" className="hover:text-blue-400 transition">About</a></li>
+          <li><a href="#certs" className="hover:text-blue-400 transition">Certificates</a></li>
+          <li><a href="#skills" className="hover:text-blue-400 transition">Skills</a></li>
+          <li><a href="#projects" className="hover:text-blue-400 transition">Projects</a></li>
+          <li><a href="#contact" className="hover:text-blue-400 transition">Contact</a></li>
+        </ul>
+      </nav>
 
-        /* ===== CORES AZUL ===== */
-        :root {
-            --azul-escuro: #0b1a33;
-            --azul-meio: #1a3a6b;
-            --azul-claro: #4a8cff;
-            --azul-brilho: #7ab7ff;
-            --texto-claro: #e0edff;
-        }
+      {/* ===== HOME / HERO ===== */}
+      <section id="home" className="max-w-6xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center gap-12">
+        {/* Imagem (substitua o src) */}
+        <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-500/50 shadow-xl shadow-blue-500/20 flex-shrink-0">
+          <img
+            src="https://via.placeholder.com/300" // ← SUBSTITUA POR SUA FOTO
+            alt="Yezzy"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="text-center md:text-left">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white">
+            Yezzy <span className="text-blue-400">👩‍🎓</span>
+          </h2>
+          <p className="text-xl text-blue-300 font-light mt-1">Design · Dev · Community Manager</p>
+          <p className="text-gray-400 max-w-lg mt-4 text-sm leading-relaxed">
+            Crio identidades visuais, desenvolvimento bots e organizo comunidades 
+            para transformar servidores em ecossistemas vibrantes e funcionais.
+          </p>
+          <a
+            href="#contact"
+            className="inline-block mt-6 bg-blue-600 hover:bg-blue-500 px-8 py-3 rounded-full font-semibold text-sm transition shadow-lg shadow-blue-600/30"
+          >
+            Vamos conversar →
+          </a>
+        </div>
+      </section>
 
-        /* ===== HEADER ===== */
-        header {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            border-bottom: 2px solid var(--azul-meio);
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--azul-claro), var(--azul-brilho));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-        }
-
-        header .tagline {
-            font-size: 1.2rem;
-            color: var(--azul-brilho);
-            margin-top: 0.5rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        header .selos {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        header .selos span {
-            background: var(--azul-escuro);
-            border: 1px solid var(--azul-meio);
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--azul-brilho);
-            letter-spacing: 0.5px;
-        }
-
-        /* ===== SEÇÕES ===== */
-        section {
-            margin: 3.5rem 0;
-        }
-
-        section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--azul-claro);
-            border-left: 5px solid var(--azul-claro);
-            padding-left: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--azul-escuro);
-            border: 1px solid var(--azul-meio);
-            border-radius: 16px;
-            padding: 1.8rem 1.5rem;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: var(--azul-claro);
-        }
-
-        .card h3 {
-            color: var(--azul-brilho);
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .card p,
-        .card li {
-            color: var(--texto-claro);
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 0.5rem;
-        }
-
-        .card ul li::before {
-            content: "▸ ";
-            color: var(--azul-claro);
-            font-weight: bold;
-        }
-
-        /* ===== SOBRE ===== */
-        .sobre-texto {
-            background: var(--azul-escuro);
-            border: 1px solid var(--azul-meio);
-            border-radius: 16px;
-            padding: 2rem;
-            font-size: 1.05rem;
-            color: var(--texto-claro);
-        }
-
-        .sobre-texto strong {
-            color: var(--azul-brilho);
-        }
-
-        /* ===== CONTATO ===== */
-        .contato-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .contato-links a {
-            background: var(--azul-escuro);
-            border: 1px solid var(--azul-meio);
-            border-radius: 40px;
-            padding: 0.8rem 2rem;
-            color: var(--texto-claro);
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s, border-color 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contato-links a:hover {
-            background: var(--azul-meio);
-            border-color: var(--azul-claro);
-            color: #fff;
-        }
-
-        .cta-final {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 2rem;
-            border-top: 2px solid var(--azul-meio);
-        }
-
-        .cta-final p {
-            font-size: 1.3rem;
-            color: var(--azul-brilho);
-        }
-
-        /* ===== RESPONSIVO ===== */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-            header .selos span {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.9rem;
-            }
-            section h2 {
-                font-size: 1.5rem;
-            }
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-
-        <!-- ===== CABEÇALHO ===== -->
-        <header>
-            <h1>Yezzy</h1>
-            <p class="tagline">design · dev · gestão de comunidades</p>
-            <div class="selos">
-                <span>🎨 UI/UX Design</span>
-                <span>⚙️ Bot Developer</span>
-                <span>👑 Community Manager</span>
+      {/* ===== ABOUT ===== */}
+      <section id="about" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
+        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">About Me</h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <p className="text-gray-300 leading-relaxed">
+              Sou <strong className="text-blue-300">Yezzy</strong>, uma criadora multifacetada que une 
+              design visual, desenvolvimento de bots e gestão de comunidades. 
+              Minha trajetória inclui desde a criação de identidades visuais completas 
+              até a automação com bots e organização de eventos que engajam milhares de pessoas.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="bg-blue-900/20 border border-blue-800/30 rounded-xl p-4 text-center">
+                <span className="block text-2xl font-bold text-blue-400">3+</span>
+                <span className="text-xs text-gray-400">Anos de experiência</span>
+              </div>
+              <div className="bg-blue-900/20 border border-blue-800/30 rounded-xl p-4 text-center">
+                <span className="block text-2xl font-bold text-blue-400">10+</span>
+                <span className="text-xs text-gray-400">Projetos</span>
+              </div>
+              <div className="bg-blue-900/20 border border-blue-800/30 rounded-xl p-4 text-center">
+                <span className="block text-2xl font-bold text-blue-400">5+</span>
+                <span className="text-xs text-gray-400">Comunidades geridas</span>
+              </div>
+              <div className="bg-blue-900/20 border border-blue-800/30 rounded-xl p-4 text-center">
+                <span className="block text-2xl font-bold text-blue-400">24/7</span>
+                <span className="text-xs text-gray-400">Dedicação</span>
+              </div>
             </div>
-        </header>
+          </div>
+          <div className="space-y-6">
+            <div className="bg-blue-900/10 border border-blue-800/30 rounded-xl p-6">
+              <h3 className="text-blue-300 font-semibold">Minha Filosofia</h3>
+              <p className="text-sm text-gray-400 mt-1">
+                Unir inspiração tradicional com tendências modernas para criar 
+                experiências únicas e de alta performance.
+              </p>
+            </div>
+            <div className="bg-blue-900/10 border border-blue-800/30 rounded-xl p-6">
+              <h3 className="text-blue-300 font-semibold">Minha Missão</h3>
+              <p className="text-sm text-gray-400 mt-1">
+                Transformar ideias complexas em interfaces limpas, responsivas 
+                e que encantam os usuários.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- ===== SOBRE ===== -->
-        <section>
-            <h2>👋 Quem sou</h2>
-            <div class="sobre-texto">
-                <p>
-                    Sou <strong>Yezzy</strong>, uma criadora multifacetada que une 
-                    <strong>design visual</strong>, <strong>desenvolvimento de bots</strong> 
-                    e <strong>gestão de comunidades</strong> para transformar servidores 
-                    em ecossistemas vibrantes.
-                </p>
-                <p style="margin-top: 0.8rem;">
-                    Minha experiência vai desde a criação de identidades visuais completas 
-                    até a automação com bots, passando pela organização de times e eventos 
-                    que engajam milhares de pessoas.
-                </p>
+      {/* ===== CERTIFICATES ===== */}
+      <section id="certs" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
+        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Certificates</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { title: 'Moderação Avançada', issuer: 'Discord Community', tags: ['Moderação', 'Gestão de Conflitos', 'Comunidades'] },
+            { title: 'UI/UX para Comunidades', issuer: 'Google', tags: ['User Research', 'Prototyping', 'Design Systems'] },
+            { title: 'JavaScript & Bots', issuer: 'FreeCodeCamp', tags: ['Node.js', 'Discord.js', 'Automação'] },
+          ].map((cert, i) => (
+            <div key={i} className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6 hover:border-blue-500 transition">
+              <h3 className="text-lg font-semibold text-white">{cert.title}</h3>
+              <p className="text-sm text-blue-300">{cert.issuer}</p>
+              <div className="flex flex-wrap gap-2 mt-3">
+                {cert.tags.map((tag, j) => (
+                  <span key={j} className="bg-blue-800/30 text-blue-200 text-[10px] px-3 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        <!-- ===== DESIGN ===== -->
-        <section>
-            <h2>🎨 Design</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Closett &amp; Banners</h3>
-                    <p>
-                        Criação de identidade visual, banners promocionais e 
-                        artes para servidores do zero. Foco em transmitir a 
-                        personalidade da comunidade com cores, tipografia e 
-                        layout estratégico.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Design para Comunidades</h3>
-                    <p>
-                        Desenvolvimento de sistemas visuais completos: 
-                        cargos, emojis personalizados, capas de eventos 
-                        e materiais de divulgação que fortalecem a marca 
-                        do servidor.
-                    </p>
-                </div>
-            </div>
-        </section>
+      {/* ===== SKILLS ===== */}
+      <section id="skills" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
+        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Skills</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
+            <h3 className="text-blue-300 font-bold">🎨 Design</h3>
+            <ul className="mt-3 space-y-1 text-sm text-gray-300">
+              <li>• Identidade Visual</li>
+              <li>• Banners & Artes</li>
+              <li>• UI/UX para Comunidades</li>
+            </ul>
+          </div>
+          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
+            <h3 className="text-blue-300 font-bold">⚙️ Dev</h3>
+            <ul className="mt-3 space-y-1 text-sm text-gray-300">
+              <li>• Discord.js</li>
+              <li>• Node.js</li>
+              <li>• Automação de bots</li>
+            </ul>
+          </div>
+          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
+            <h3 className="text-blue-300 font-bold">👑 Gestão</h3>
+            <ul className="mt-3 space-y-1 text-sm text-gray-300">
+              <li>• Liderança de equipes</li>
+              <li>• Organização de eventos</li>
+              <li>• Moderação avançada</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-        <!-- ===== DEV ===== -->
-        <section>
-            <h2>⚙️ Desenvolvimento</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Bots em Desenvolvimento</h3>
-                    <p>
-                        Criação de bots para Discord com foco em automação, 
-                        moderação, sistemas de verificação e funções 
-                        interativas que melhoram a experiência dos membros.
-                    </p>
-                    <ul>
-                        <li>Automação de boas-vindas</li>
-                        <li>Sistemas de cargos por reação</li>
-                        <li>Comandos personalizados</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Ferramentas para Gestão</h3>
-                    <p>
-                        Desenvolvimento de soluções sob medida para 
-                        facilitar o trabalho de equipes de moderação e 
-                        administração em servidores de grande porte.
-                    </p>
-                </div>
+      {/* ===== PROJECTS ===== */}
+      <section id="projects" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
+        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Projects</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { name: 'Mov Call (Turquia)', role: 'Sub-Líder', desc: 'Coordenação de equipes e estrutura organizacional.' },
+            { name: 'Pureza', role: 'Eventos & Social', desc: 'Criação de eventos e gestão do time social.' },
+            { name: 'Cidadela da Hayley', role: 'Aprendiz de Mod & Editora', desc: 'Moderação, edição e promoção.' },
+          ].map((p, i) => (
+            <div key={i} className="bg-blue-900/10 border border-blue-800/30 rounded-2xl overflow-hidden hover:border-blue-500 transition">
+              {/* Imagem placeholder — substitua o src */}
+              <img
+                src={`https://via.placeholder.com/400x200/1a3a6b/4a8cff?text=${p.name}`}
+                alt={p.name}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-5">
+                <h3 className="font-bold text-white">{p.name}</h3>
+                <p className="text-sm text-blue-300">{p.role}</p>
+                <p className="text-sm text-gray-400 mt-1">{p.desc}</p>
+              </div>
             </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        <!-- ===== EXPERIÊNCIA (ADMIN) ===== -->
-        <section>
-            <h2>👑 Gestão &amp; Comunidades</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Sub-Líder · Mov Call (Turquia)</h3>
-                    <p>
-                        Atuação na liderança de uma comunidade internacional, 
-                        coordenando equipes e garantindo a organização 
-                        estrutural do servidor.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Eventos, Social e Mov Call · Pureza</h3>
-                    <p>
-                        Criação e execução de eventos, gestão do time 
-                        social e manutenção do fluxo de movimentação 
-                        dentro da comunidade.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Aprendiz de Mod, Editora e Promotora · Cidadela da Hayley</h3>
-                    <p>
-                        Início da trajetória como moderadora, com 
-                        responsabilidades em edição de conteúdos e 
-                        promoção do servidor, aprendendo na prática 
-                        a dinâmica de comunidades ativas.
-                    </p>
-                </div>
-            </div>
-        </section>
+      {/* ===== EDUCATION ===== */}
+      <section className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
+        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Education</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
+            <h3 className="font-bold text-white">Formação em Design</h3>
+            <p className="text-sm text-blue-300">2022 - 2024</p>
+            <p className="text-sm text-gray-400 mt-1">Design visual e identidade de marcas digitais.</p>
+          </div>
+          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
+            <h3 className="font-bold text-white">Desenvolvimento Web</h3>
+            <p className="text-sm text-blue-300">2023</p>
+            <p className="text-sm text-gray-400 mt-1">HTML, CSS, JavaScript e React.</p>
+          </div>
+          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
+            <h3 className="font-bold text-white">Gestão de Comunidades</h3>
+            <p className="text-sm text-blue-300">2021 - 2024</p>
+            <p className="text-sm text-gray-400 mt-1">Moderação, liderança e organização de eventos.</p>
+          </div>
+        </div>
+      </section>
 
-        <!-- ===== CONTATO ===== -->
-        <section>
-            <h2>📬 Vamos conversar?</h2>
-            <div class="contato-links">
-                <a href="#">📧 E-mail</a>
-                <a href="#">💬 Discord</a>
-                <a href="#">🐦 Twitter / X</a>
-                <a href="#">📸 Instagram</a>
-            </div>
-            <div class="cta-final">
-                <p>✨ Transformo comunidades em ecossistemas organizados e vibrantes.</p>
-                <p style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.7;">
-                    Design · Dev · Gestão — tudo num só lugar.
-                </p>
-            </div>
-        </section>
+      {/* ===== CONTACT ===== */}
+      <section id="contact" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
+        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Contact</h2>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <a href="#" className="bg-blue-900/20 border border-blue-800/30 hover:border-blue-400 px-8 py-3 rounded-full text-sm font-medium transition">📧 E-mail</a>
+          <a href="#" className="bg-blue-900/20 border border-blue-800/30 hover:border-blue-400 px-8 py-3 rounded-full text-sm font-medium transition">💬 Discord</a>
+          <a href="#" className="bg-blue-900/20 border border-blue-800/30 hover:border-blue-400 px-8 py-3 rounded-full text-sm font-medium transition">🐦 Twitter</a>
+          <a href="#" className="bg-blue-900/20 border border-blue-800/30 hover:border-blue-400 px-8 py-3 rounded-full text-sm font-medium transition">📸 Instagram</a>
+        </div>
+        <p className="text-center text-gray-500 text-sm mt-8">
+          © 2026 Yezzy · Feito com 💙
+        </p>
+      </section>
 
     </div>
+  );
+}
 
-</body>
-</html>
+export default App;
