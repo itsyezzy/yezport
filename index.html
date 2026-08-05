@@ -18,23 +18,103 @@
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #0a0e1a;
-      color: #e0edff;
+      background: #0d0808;
+      color: #f0e0e0;
       line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
 
+    /* ========== ENGRENAGENS DE FUNDO ========== */
+    .gears-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .gear {
+      position: absolute;
+      font-size: 80px;
+      opacity: 0.06;
+      color: #ff4444;
+      animation: spin 20s linear infinite;
+    }
+
+    .gear:nth-child(1) {
+      top: 5%;
+      left: 5%;
+      font-size: 120px;
+      animation-duration: 25s;
+    }
+
+    .gear:nth-child(2) {
+      bottom: 10%;
+      right: 5%;
+      font-size: 100px;
+      animation-duration: 18s;
+      animation-direction: reverse;
+    }
+
+    .gear:nth-child(3) {
+      top: 40%;
+      left: 80%;
+      font-size: 60px;
+      animation-duration: 22s;
+    }
+
+    .gear:nth-child(4) {
+      bottom: 30%;
+      left: 8%;
+      font-size: 70px;
+      animation-duration: 30s;
+      animation-direction: reverse;
+    }
+
+    .gear:nth-child(5) {
+      top: 70%;
+      left: 50%;
+      font-size: 50px;
+      animation-duration: 15s;
+    }
+
+    .gear:nth-child(6) {
+      top: 15%;
+      left: 45%;
+      font-size: 40px;
+      animation-duration: 28s;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ========== CONTEÚDO (fica em cima) ========== */
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* ========== CORES ========== */
+    /* ========== CORES VERMELHAS ========== */
     :root {
-      --azul-escuro: #0b1a33;
-      --azul-meio: #1a3a6b;
-      --azul-claro: #4a8cff;
-      --azul-brilho: #7ab7ff;
+      --vermelho-escuro: #1a0808;
+      --vermelho-meio: #4a1a1a;
+      --vermelho-claro: #cc3333;
+      --vermelho-brilho: #ff5555;
+      --vermelho-destaque: #ff2222;
     }
 
     /* ========== NAVBAR ========== */
@@ -44,13 +124,14 @@
       align-items: center;
       flex-wrap: wrap;
       padding: 20px 0;
-      border-bottom: 1px solid rgba(26, 58, 107, 0.5);
+      border-bottom: 1px solid rgba(200, 50, 50, 0.3);
     }
 
     .navbar .logo {
       font-size: 28px;
       font-weight: 800;
-      color: var(--azul-claro);
+      color: var(--vermelho-claro);
+      text-shadow: 0 0 20px rgba(255, 50, 50, 0.3);
     }
 
     .navbar ul {
@@ -61,7 +142,7 @@
     }
 
     .navbar ul a {
-      color: #b0c8e8;
+      color: #d0b0b0;
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
@@ -69,22 +150,23 @@
     }
 
     .navbar ul a:hover {
-      color: var(--azul-claro);
+      color: var(--vermelho-claro);
     }
 
     /* ========== SEÇÕES ========== */
     section {
       padding: 60px 0;
-      border-top: 1px solid rgba(26, 58, 107, 0.3);
+      border-top: 1px solid rgba(200, 50, 50, 0.15);
     }
 
     .section-title {
       font-size: 30px;
       font-weight: 700;
-      color: var(--azul-claro);
-      border-left: 5px solid var(--azul-claro);
+      color: var(--vermelho-claro);
+      border-left: 5px solid var(--vermelho-claro);
       padding-left: 16px;
       margin-bottom: 32px;
+      text-shadow: 0 0 20px rgba(255, 50, 50, 0.15);
     }
 
     /* ========== HERO ========== */
@@ -100,10 +182,11 @@
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      border: 4px solid var(--azul-claro);
-      box-shadow: 0 0 40px rgba(74, 140, 255, 0.2);
+      border: 4px solid var(--vermelho-claro);
+      box-shadow: 0 0 50px rgba(255, 50, 50, 0.25);
       object-fit: cover;
       flex-shrink: 0;
+      background: var(--vermelho-escuro);
     }
 
     .hero h1 {
@@ -112,25 +195,25 @@
     }
 
     .hero h1 span {
-      color: var(--azul-claro);
+      color: var(--vermelho-claro);
     }
 
     .hero .subtitle {
       font-size: 20px;
-      color: var(--azul-brilho);
+      color: var(--vermelho-brilho);
       font-weight: 300;
       margin: 4px 0 12px;
     }
 
     .hero p {
-      color: #a0b8d8;
+      color: #c0a8a8;
       max-width: 480px;
       font-size: 15px;
     }
 
     .btn {
       display: inline-block;
-      background: var(--azul-claro);
+      background: var(--vermelho-claro);
       color: #fff;
       padding: 12px 36px;
       border-radius: 40px;
@@ -138,13 +221,14 @@
       font-weight: 600;
       font-size: 14px;
       margin-top: 20px;
-      transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 4px 20px rgba(74, 140, 255, 0.3);
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 30px rgba(200, 50, 50, 0.3);
     }
 
     .btn:hover {
-      background: #3a7ae0;
+      background: #aa2222;
       transform: translateY(-2px);
+      box-shadow: 0 6px 40px rgba(200, 50, 50, 0.5);
     }
 
     /* ========== ABOUT ========== */
@@ -155,12 +239,12 @@
     }
 
     .about-grid p {
-      color: #b0c8e8;
+      color: #c0a8a8;
       font-size: 15px;
     }
 
     .about-grid strong {
-      color: var(--azul-brilho);
+      color: var(--vermelho-brilho);
     }
 
     .stats {
@@ -171,8 +255,8 @@
     }
 
     .stat-box {
-      background: rgba(11, 26, 51, 0.6);
-      border: 1px solid rgba(26, 58, 107, 0.4);
+      background: rgba(26, 8, 8, 0.7);
+      border: 1px solid rgba(200, 50, 50, 0.25);
       border-radius: 14px;
       padding: 16px;
       text-align: center;
@@ -181,83 +265,79 @@
     .stat-box .number {
       font-size: 26px;
       font-weight: 700;
-      color: var(--azul-claro);
+      color: var(--vermelho-claro);
     }
 
     .stat-box .label {
       font-size: 11px;
-      color: #8098b8;
+      color: #886868;
     }
 
     .philosophy-box {
-      background: rgba(11, 26, 51, 0.4);
-      border: 1px solid rgba(26, 58, 107, 0.4);
+      background: rgba(26, 8, 8, 0.5);
+      border: 1px solid rgba(200, 50, 50, 0.2);
       border-radius: 14px;
       padding: 20px;
       margin-bottom: 16px;
     }
 
     .philosophy-box h3 {
-      color: var(--azul-brilho);
+      color: var(--vermelho-brilho);
       font-size: 16px;
     }
 
     .philosophy-box p {
       font-size: 14px;
-      color: #8098b8;
+      color: #886868;
       margin-top: 4px;
     }
 
     /* ========== CARDS ========== */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
     }
 
     .card {
-      background: rgba(11, 26, 51, 0.5);
-      border: 1px solid rgba(26, 58, 107, 0.4);
+      background: rgba(26, 8, 8, 0.6);
+      border: 1px solid rgba(200, 50, 50, 0.2);
       border-radius: 18px;
-      padding: 24px;
+      overflow: hidden;
       transition: border-color 0.3s, transform 0.2s;
     }
 
     .card:hover {
-      border-color: var(--azul-claro);
+      border-color: var(--vermelho-claro);
       transform: translateY(-4px);
     }
 
-    .card h3 {
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: var(--vermelho-escuro);
+    }
+
+    .card .info {
+      padding: 20px;
+    }
+
+    .card .info h3 {
       font-size: 18px;
       color: #fff;
     }
 
-    .card .issuer {
-      font-size: 13px;
-      color: var(--azul-brilho);
+    .card .info .tag {
+      font-size: 12px;
+      color: var(--vermelho-brilho);
+      font-weight: 600;
     }
 
-    .card .desc {
+    .card .info .desc {
       font-size: 14px;
-      color: #90a8c8;
+      color: #a08888;
       margin-top: 6px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .tags span {
-      background: rgba(26, 58, 107, 0.4);
-      color: var(--azul-brilho);
-      font-size: 10px;
-      padding: 4px 14px;
-      border-radius: 30px;
-      font-weight: 500;
     }
 
     /* ========== SKILLS ========== */
@@ -268,58 +348,26 @@
     }
 
     .skill-card {
-      background: rgba(11, 26, 51, 0.5);
-      border: 1px solid rgba(26, 58, 107, 0.4);
+      background: rgba(26, 8, 8, 0.6);
+      border: 1px solid rgba(200, 50, 50, 0.2);
       border-radius: 16px;
       padding: 24px;
+      text-align: center;
+    }
+
+    .skill-card .icon {
+      font-size: 36px;
+      display: block;
+      margin-bottom: 8px;
     }
 
     .skill-card h3 {
-      color: var(--azul-brilho);
+      color: var(--vermelho-brilho);
       font-size: 16px;
     }
 
-    .skill-card ul {
-      list-style: none;
-      margin-top: 10px;
-    }
-
-    .skill-card ul li {
-      color: #90a8c8;
-      font-size: 14px;
-      padding: 2px 0;
-    }
-
-    .skill-card ul li::before {
-      content: "▸ ";
-      color: var(--azul-claro);
-    }
-
-    /* ========== PROJECTS ========== */
-    .project-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 12px 12px 0 0;
-      background: #1a2a4a;
-    }
-
-    .project-card .info {
-      padding: 18px 20px 20px;
-    }
-
-    .project-card .info h3 {
-      color: #fff;
-      font-size: 17px;
-    }
-
-    .project-card .info .role {
-      color: var(--azul-brilho);
-      font-size: 13px;
-    }
-
-    .project-card .info .desc {
-      color: #90a8c8;
+    .skill-card p {
+      color: #886868;
       font-size: 13px;
       margin-top: 4px;
     }
@@ -333,28 +381,29 @@
     }
 
     .contact-links a {
-      background: rgba(11, 26, 51, 0.6);
-      border: 1px solid rgba(26, 58, 107, 0.4);
+      background: rgba(26, 8, 8, 0.7);
+      border: 1px solid rgba(200, 50, 50, 0.25);
       padding: 12px 32px;
       border-radius: 40px;
-      color: #b0c8e8;
+      color: #c0a8a8;
       text-decoration: none;
       font-weight: 500;
       font-size: 14px;
-      transition: border-color 0.3s, background 0.3s;
+      transition: border-color 0.3s, background 0.3s, color 0.3s;
     }
 
     .contact-links a:hover {
-      border-color: var(--azul-claro);
-      background: rgba(26, 58, 107, 0.4);
+      border-color: var(--vermelho-claro);
+      background: rgba(200, 50, 50, 0.15);
+      color: #fff;
     }
 
     .footer {
       text-align: center;
       padding: 30px 0 20px;
-      color: #506080;
+      color: #664848;
       font-size: 13px;
-      border-top: 1px solid rgba(26, 58, 107, 0.3);
+      border-top: 1px solid rgba(200, 50, 50, 0.15);
     }
 
     /* ========== RESPONSIVO ========== */
@@ -372,14 +421,14 @@
         grid-template-columns: 1fr;
       }
 
-      .navbar ul {
-        gap: 14px;
-        margin-top: 10px;
-      }
-
       .navbar {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .navbar ul {
+        gap: 14px;
+        margin-top: 10px;
       }
 
       .section-title {
@@ -389,6 +438,23 @@
       .hero h1 {
         font-size: 32px;
       }
+
+      .hero-avatar {
+        width: 140px;
+        height: 140px;
+      }
+
+      .gear {
+        font-size: 40px !important;
+      }
+
+      .gear:nth-child(1) {
+        font-size: 60px !important;
+      }
+
+      .gear:nth-child(2) {
+        font-size: 50px !important;
+      }
     }
 
     @media (max-width: 480px) {
@@ -397,14 +463,29 @@
       }
 
       .hero-avatar {
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
+      }
+
+      .container {
+        padding: 0 16px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- ===== ENGRENAGENS RODANDO ===== -->
+  <div class="gears-bg">
+    <div class="gear">⚙</div>
+    <div class="gear">⚙</div>
+    <div class="gear">⚙</div>
+    <div class="gear">⚙</div>
+    <div class="gear">⚙</div>
+    <div class="gear">⚙</div>
+  </div>
+
+  <!-- ===== CONTEÚDO ===== -->
   <div class="container">
 
     <!-- ===== NAVBAR ===== -->
@@ -413,9 +494,8 @@
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#certs">Certificates</a></li>
+        <li><a href="#projects">Projetos</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -424,13 +504,13 @@
     <section id="home">
       <div class="hero">
         <img
-          src="/images/avatar.jpg"
+          src="images/Vivian_Hugo-removebg-preview.png"
           alt="Yezzy"
           class="hero-avatar"
-          onerror="this.src='https://via.placeholder.com/300/0b1a33/4a8cff?text=Yezzy'"
+          onerror="this.src='https://via.placeholder.com/300/1a0808/cc3333?text=Yezzy'"
         />
         <div>
-          <h1>Yezzy <span>👩‍🎓</span></h1>
+          <h1>Yezzy <span>🔥</span></h1>
           <p class="subtitle">Design · Dev · Community Manager</p>
           <p>
             Crio identidades visuais, desenvolvo bots e organizo comunidades
@@ -443,7 +523,7 @@
 
     <!-- ===== ABOUT ===== -->
     <section id="about">
-      <h2 class="section-title">About Me</h2>
+      <h2 class="section-title">Sobre Mim</h2>
       <div class="about-grid">
         <div>
           <p>
@@ -484,35 +564,46 @@
       </div>
     </section>
 
-    <!-- ===== CERTIFICATES ===== -->
-    <section id="certs">
-      <h2 class="section-title">Certificates</h2>
+    <!-- ===== PROJETOS (suas imagens) ===== -->
+    <section id="projects">
+      <h2 class="section-title">Meus Projetos</h2>
       <div class="card-grid">
         <div class="card">
-          <h3>Moderação Avançada</h3>
-          <p class="issuer">Discord Community</p>
-          <div class="tags">
-            <span>Moderação</span>
-            <span>Gestão de Conflitos</span>
-            <span>Comunidades</span>
+          <img
+            src="images/Vivian_Hugo-removebg-preview.png"
+            alt="Projeto 1"
+            onerror="this.src='https://via.placeholder.com/400x220/1a0808/cc3333?text=Projeto+1'"
+          />
+          <div class="info">
+            <h3>Vivian & Hugo</h3>
+            <p class="tag">🎨 Fanart</p>
+            <p class="desc">Ilustração digital com estilo único e traços marcantes.</p>
           </div>
         </div>
+
         <div class="card">
-          <h3>UI/UX para Comunidades</h3>
-          <p class="issuer">Google</p>
-          <div class="tags">
-            <span>User Research</span>
-            <span>Prototyping</span>
-            <span>Design Systems</span>
+          <img
+            src="images/_Hugo_-removebg-preview.png"
+            alt="Projeto 2"
+            onerror="this.src='https://via.placeholder.com/400x220/1a0808/cc3333?text=Projeto+2'"
+          />
+          <div class="info">
+            <h3>Hugo</h3>
+            <p class="tag">🎨 Fanart</p>
+            <p class="desc">Personagem com design detalhado e cores vibrantes.</p>
           </div>
         </div>
+
         <div class="card">
-          <h3>JavaScript & Bots</h3>
-          <p class="issuer">FreeCodeCamp</p>
-          <div class="tags">
-            <span>Node.js</span>
-            <span>Discord.js</span>
-            <span>Automação</span>
+          <img
+            src="images/VIVIAN_HUGO______FANART-removebg-preview.png"
+            alt="Projeto 3"
+            onerror="this.src='https://via.placeholder.com/400x220/1a0808/cc3333?text=Projeto+3'"
+          />
+          <div class="info">
+            <h3>Vivian & Hugo · Fanart</h3>
+            <p class="tag">🎨 Fanart</p>
+            <p class="desc">Arte completa com composição criativa e acabamento profissional.</p>
           </div>
         </div>
       </div>
@@ -523,88 +614,26 @@
       <h2 class="section-title">Skills</h2>
       <div class="skill-grid">
         <div class="skill-card">
-          <h3>🎨 Design</h3>
-          <ul>
-            <li>Identidade Visual</li>
-            <li>Banners & Artes</li>
-            <li>UI/UX para Comunidades</li>
-          </ul>
+          <span class="icon">🎨</span>
+          <h3>Design</h3>
+          <p>Identidade Visual, Banners, UI/UX</p>
         </div>
         <div class="skill-card">
-          <h3>⚙️ Dev</h3>
-          <ul>
-            <li>Discord.js</li>
-            <li>Node.js</li>
-            <li>Automação de bots</li>
-          </ul>
+          <span class="icon">⚙️</span>
+          <h3>Dev</h3>
+          <p>Discord.js, Node.js, Automação</p>
         </div>
         <div class="skill-card">
-          <h3>👑 Gestão</h3>
-          <ul>
-            <li>Liderança de equipes</li>
-            <li>Organização de eventos</li>
-            <li>Moderação avançada</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PROJECTS ===== -->
-    <section id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="card-grid">
-        <div class="card project-card">
-          <img src="/images/movcall.jpg" alt="Mov Call" onerror="this.src='https://via.placeholder.com/400x160/1a3a6b/4a8cff?text=Mov+Call'" />
-          <div class="info">
-            <h3>Mov Call (Turquia)</h3>
-            <p class="role">Sub-Líder</p>
-            <p class="desc">Coordenação de equipes e estrutura organizacional.</p>
-          </div>
-        </div>
-        <div class="card project-card">
-          <img src="/images/pureza.jpg" alt="Pureza" onerror="this.src='https://via.placeholder.com/400x160/1a3a6b/4a8cff?text=Pureza'" />
-          <div class="info">
-            <h3>Pureza</h3>
-            <p class="role">Eventos & Social</p>
-            <p class="desc">Criação de eventos e gestão do time social.</p>
-          </div>
-        </div>
-        <div class="card project-card">
-          <img src="/images/hayley.jpg" alt="Cidadela da Hayley" onerror="this.src='https://via.placeholder.com/400x160/1a3a6b/4a8cff?text=Cidadela+da+Hayley'" />
-          <div class="info">
-            <h3>Cidadela da Hayley</h3>
-            <p class="role">Aprendiz de Mod & Editora</p>
-            <p class="desc">Moderação, edição e promoção do servidor.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== EDUCATION ===== -->
-    <section>
-      <h2 class="section-title">Education</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Formação em Design</h3>
-          <p class="issuer">2022 - 2024</p>
-          <p class="desc">Design visual e identidade de marcas digitais.</p>
-        </div>
-        <div class="card">
-          <h3>Desenvolvimento Web</h3>
-          <p class="issuer">2023</p>
-          <p class="desc">HTML, CSS, JavaScript e React.</p>
-        </div>
-        <div class="card">
-          <h3>Gestão de Comunidades</h3>
-          <p class="issuer">2021 - 2024</p>
-          <p class="desc">Moderação, liderança e organização de eventos.</p>
+          <span class="icon">👑</span>
+          <h3>Gestão</h3>
+          <p>Liderança, Eventos, Moderação</p>
         </div>
       </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
     <section id="contact">
-      <h2 class="section-title">Contact</h2>
+      <h2 class="section-title">Contato</h2>
       <div class="contact-links">
         <a href="#">📧 E-mail</a>
         <a href="#">💬 Discord</a>
@@ -615,7 +644,7 @@
 
     <!-- ===== FOOTER ===== -->
     <div class="footer">
-      © 2026 Yezzy · Feito com 💙
+      © 2026 Yezzy · Feito com ❤️
     </div>
 
   </div>
