@@ -1,219 +1,624 @@
-// App.js
-import React from 'react';
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yezzy · Portfólio</title>
+  <style>
+    /* ========== RESET ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-function App() {
-  return (
-    <div className="min-h-screen bg-[#0a0e1a] text-gray-200 font-sans">
+    html {
+      scroll-behavior: smooth;
+    }
 
-      {/* ===== NAVBAR ===== */}
-      <nav className="max-w-6xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between border-b border-blue-900/40">
-        <h1 className="text-2xl font-bold text-blue-400 tracking-wide">Yezzy</h1>
-        <ul className="flex flex-wrap gap-6 text-sm font-medium text-gray-300">
-          <li><a href="#home" className="hover:text-blue-400 transition">Home</a></li>
-          <li><a href="#about" className="hover:text-blue-400 transition">About</a></li>
-          <li><a href="#certs" className="hover:text-blue-400 transition">Certificates</a></li>
-          <li><a href="#skills" className="hover:text-blue-400 transition">Skills</a></li>
-          <li><a href="#projects" className="hover:text-blue-400 transition">Projects</a></li>
-          <li><a href="#contact" className="hover:text-blue-400 transition">Contact</a></li>
-        </ul>
-      </nav>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0a0e1a;
+      color: #e0edff;
+      line-height: 1.6;
+    }
 
-      {/* ===== HOME / HERO ===== */}
-      <section id="home" className="max-w-6xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center gap-12">
-        {/* Imagem (substitua o src) */}
-        <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-500/50 shadow-xl shadow-blue-500/20 flex-shrink-0">
-          <img
-            src="https://via.placeholder.com/300" // ← SUBSTITUA POR SUA FOTO
-            alt="Yezzy"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white">
-            Yezzy <span className="text-blue-400">👩‍🎓</span>
-          </h2>
-          <p className="text-xl text-blue-300 font-light mt-1">Design · Dev · Community Manager</p>
-          <p className="text-gray-400 max-w-lg mt-4 text-sm leading-relaxed">
-            Crio identidades visuais, desenvolvimento bots e organizo comunidades 
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== CORES ========== */
+    :root {
+      --azul-escuro: #0b1a33;
+      --azul-meio: #1a3a6b;
+      --azul-claro: #4a8cff;
+      --azul-brilho: #7ab7ff;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(26, 58, 107, 0.5);
+    }
+
+    .navbar .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--azul-claro);
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .navbar ul a {
+      color: #b0c8e8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .navbar ul a:hover {
+      color: var(--azul-claro);
+    }
+
+    /* ========== SEÇÕES ========== */
+    section {
+      padding: 60px 0;
+      border-top: 1px solid rgba(26, 58, 107, 0.3);
+    }
+
+    .section-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--azul-claro);
+      border-left: 5px solid var(--azul-claro);
+      padding-left: 16px;
+      margin-bottom: 32px;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding: 40px 0 20px;
+    }
+
+    .hero-avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid var(--azul-claro);
+      box-shadow: 0 0 40px rgba(74, 140, 255, 0.2);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--azul-claro);
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--azul-brilho);
+      font-weight: 300;
+      margin: 4px 0 12px;
+    }
+
+    .hero p {
+      color: #a0b8d8;
+      max-width: 480px;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--azul-claro);
+      color: #fff;
+      padding: 12px 36px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 20px;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(74, 140, 255, 0.3);
+    }
+
+    .btn:hover {
+      background: #3a7ae0;
+      transform: translateY(-2px);
+    }
+
+    /* ========== ABOUT ========== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .about-grid p {
+      color: #b0c8e8;
+      font-size: 15px;
+    }
+
+    .about-grid strong {
+      color: var(--azul-brilho);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .stat-box {
+      background: rgba(11, 26, 51, 0.6);
+      border: 1px solid rgba(26, 58, 107, 0.4);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .stat-box .number {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--azul-claro);
+    }
+
+    .stat-box .label {
+      font-size: 11px;
+      color: #8098b8;
+    }
+
+    .philosophy-box {
+      background: rgba(11, 26, 51, 0.4);
+      border: 1px solid rgba(26, 58, 107, 0.4);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .philosophy-box h3 {
+      color: var(--azul-brilho);
+      font-size: 16px;
+    }
+
+    .philosophy-box p {
+      font-size: 14px;
+      color: #8098b8;
+      margin-top: 4px;
+    }
+
+    /* ========== CARDS ========== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(11, 26, 51, 0.5);
+      border: 1px solid rgba(26, 58, 107, 0.4);
+      border-radius: 18px;
+      padding: 24px;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--azul-claro);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .card .issuer {
+      font-size: 13px;
+      color: var(--azul-brilho);
+    }
+
+    .card .desc {
+      font-size: 14px;
+      color: #90a8c8;
+      margin-top: 6px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tags span {
+      background: rgba(26, 58, 107, 0.4);
+      color: var(--azul-brilho);
+      font-size: 10px;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-weight: 500;
+    }
+
+    /* ========== SKILLS ========== */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: rgba(11, 26, 51, 0.5);
+      border: 1px solid rgba(26, 58, 107, 0.4);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .skill-card h3 {
+      color: var(--azul-brilho);
+      font-size: 16px;
+    }
+
+    .skill-card ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .skill-card ul li {
+      color: #90a8c8;
+      font-size: 14px;
+      padding: 2px 0;
+    }
+
+    .skill-card ul li::before {
+      content: "▸ ";
+      color: var(--azul-claro);
+    }
+
+    /* ========== PROJECTS ========== */
+    .project-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+      background: #1a2a4a;
+    }
+
+    .project-card .info {
+      padding: 18px 20px 20px;
+    }
+
+    .project-card .info h3 {
+      color: #fff;
+      font-size: 17px;
+    }
+
+    .project-card .info .role {
+      color: var(--azul-brilho);
+      font-size: 13px;
+    }
+
+    .project-card .info .desc {
+      color: #90a8c8;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .contact-links a {
+      background: rgba(11, 26, 51, 0.6);
+      border: 1px solid rgba(26, 58, 107, 0.4);
+      padding: 12px 32px;
+      border-radius: 40px;
+      color: #b0c8e8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .contact-links a:hover {
+      border-color: var(--azul-claro);
+      background: rgba(26, 58, 107, 0.4);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 0 20px;
+      color: #506080;
+      font-size: 13px;
+      border-top: 1px solid rgba(26, 58, 107, 0.3);
+    }
+
+    /* ========== RESPONSIVO ========== */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero p {
+        max-width: 100%;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar ul {
+        gap: 14px;
+        margin-top: 10px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-avatar {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+      <span class="logo">Yezzy</span>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#certs">Certificates</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- ===== HOME / HERO ===== -->
+    <section id="home">
+      <div class="hero">
+        <img
+          src="/images/avatar.jpg"
+          alt="Yezzy"
+          class="hero-avatar"
+          onerror="this.src='https://via.placeholder.com/300/0b1a33/4a8cff?text=Yezzy'"
+        />
+        <div>
+          <h1>Yezzy <span>👩‍🎓</span></h1>
+          <p class="subtitle">Design · Dev · Community Manager</p>
+          <p>
+            Crio identidades visuais, desenvolvo bots e organizo comunidades
             para transformar servidores em ecossistemas vibrantes e funcionais.
           </p>
-          <a
-            href="#contact"
-            className="inline-block mt-6 bg-blue-600 hover:bg-blue-500 px-8 py-3 rounded-full font-semibold text-sm transition shadow-lg shadow-blue-600/30"
-          >
-            Vamos conversar →
-          </a>
+          <a href="#contact" class="btn">Vamos conversar →</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* ===== ABOUT ===== */}
-      <section id="about" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
-        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">About Me</h2>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <p className="text-gray-300 leading-relaxed">
-              Sou <strong className="text-blue-300">Yezzy</strong>, uma criadora multifacetada que une 
-              design visual, desenvolvimento de bots e gestão de comunidades. 
-              Minha trajetória inclui desde a criação de identidades visuais completas 
-              até a automação com bots e organização de eventos que engajam milhares de pessoas.
-            </p>
-            <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="bg-blue-900/20 border border-blue-800/30 rounded-xl p-4 text-center">
-                <span className="block text-2xl font-bold text-blue-400">3+</span>
-                <span className="text-xs text-gray-400">Anos de experiência</span>
-              </div>
-              <div className="bg-blue-900/20 border border-blue-800/30 rounded-xl p-4 text-center">
-                <span className="block text-2xl font-bold text-blue-400">10+</span>
-                <span className="text-xs text-gray-400">Projetos</span>
-              </div>
-              <div className="bg-blue-900/20 border border-blue-800/30 rounded-xl p-4 text-center">
-                <span className="block text-2xl font-bold text-blue-400">5+</span>
-                <span className="text-xs text-gray-400">Comunidades geridas</span>
-              </div>
-              <div className="bg-blue-900/20 border border-blue-800/30 rounded-xl p-4 text-center">
-                <span className="block text-2xl font-bold text-blue-400">24/7</span>
-                <span className="text-xs text-gray-400">Dedicação</span>
-              </div>
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div>
+          <p>
+            Sou <strong>Yezzy</strong>, uma criadora multifacetada que une
+            design visual, desenvolvimento de bots e gestão de comunidades.
+            Minha trajetória inclui desde a criação de identidades visuais completas
+            até a automação com bots e organização de eventos que engajam milhares de pessoas.
+          </p>
+          <div class="stats">
+            <div class="stat-box">
+              <div class="number">3+</div>
+              <div class="label">Anos de experiência</div>
             </div>
-          </div>
-          <div className="space-y-6">
-            <div className="bg-blue-900/10 border border-blue-800/30 rounded-xl p-6">
-              <h3 className="text-blue-300 font-semibold">Minha Filosofia</h3>
-              <p className="text-sm text-gray-400 mt-1">
-                Unir inspiração tradicional com tendências modernas para criar 
-                experiências únicas e de alta performance.
-              </p>
+            <div class="stat-box">
+              <div class="number">10+</div>
+              <div class="label">Projetos</div>
             </div>
-            <div className="bg-blue-900/10 border border-blue-800/30 rounded-xl p-6">
-              <h3 className="text-blue-300 font-semibold">Minha Missão</h3>
-              <p className="text-sm text-gray-400 mt-1">
-                Transformar ideias complexas em interfaces limpas, responsivas 
-                e que encantam os usuários.
-              </p>
+            <div class="stat-box">
+              <div class="number">5+</div>
+              <div class="label">Comunidades geridas</div>
+            </div>
+            <div class="stat-box">
+              <div class="number">24/7</div>
+              <div class="label">Dedicação</div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* ===== CERTIFICATES ===== */}
-      <section id="certs" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
-        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Certificates</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { title: 'Moderação Avançada', issuer: 'Discord Community', tags: ['Moderação', 'Gestão de Conflitos', 'Comunidades'] },
-            { title: 'UI/UX para Comunidades', issuer: 'Google', tags: ['User Research', 'Prototyping', 'Design Systems'] },
-            { title: 'JavaScript & Bots', issuer: 'FreeCodeCamp', tags: ['Node.js', 'Discord.js', 'Automação'] },
-          ].map((cert, i) => (
-            <div key={i} className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6 hover:border-blue-500 transition">
-              <h3 className="text-lg font-semibold text-white">{cert.title}</h3>
-              <p className="text-sm text-blue-300">{cert.issuer}</p>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {cert.tags.map((tag, j) => (
-                  <span key={j} className="bg-blue-800/30 text-blue-200 text-[10px] px-3 py-1 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== SKILLS ===== */}
-      <section id="skills" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
-        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Skills</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
-            <h3 className="text-blue-300 font-bold">🎨 Design</h3>
-            <ul className="mt-3 space-y-1 text-sm text-gray-300">
-              <li>• Identidade Visual</li>
-              <li>• Banners & Artes</li>
-              <li>• UI/UX para Comunidades</li>
-            </ul>
+        <div>
+          <div class="philosophy-box">
+            <h3>Minha Filosofia</h3>
+            <p>Unir inspiração tradicional com tendências modernas para criar experiências únicas e de alta performance.</p>
           </div>
-          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
-            <h3 className="text-blue-300 font-bold">⚙️ Dev</h3>
-            <ul className="mt-3 space-y-1 text-sm text-gray-300">
-              <li>• Discord.js</li>
-              <li>• Node.js</li>
-              <li>• Automação de bots</li>
-            </ul>
-          </div>
-          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
-            <h3 className="text-blue-300 font-bold">👑 Gestão</h3>
-            <ul className="mt-3 space-y-1 text-sm text-gray-300">
-              <li>• Liderança de equipes</li>
-              <li>• Organização de eventos</li>
-              <li>• Moderação avançada</li>
-            </ul>
+          <div class="philosophy-box">
+            <h3>Minha Missão</h3>
+            <p>Transformar ideias complexas em interfaces limpas, responsivas e que encantam os usuários.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* ===== PROJECTS ===== */}
-      <section id="projects" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
-        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Projects</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { name: 'Mov Call (Turquia)', role: 'Sub-Líder', desc: 'Coordenação de equipes e estrutura organizacional.' },
-            { name: 'Pureza', role: 'Eventos & Social', desc: 'Criação de eventos e gestão do time social.' },
-            { name: 'Cidadela da Hayley', role: 'Aprendiz de Mod & Editora', desc: 'Moderação, edição e promoção.' },
-          ].map((p, i) => (
-            <div key={i} className="bg-blue-900/10 border border-blue-800/30 rounded-2xl overflow-hidden hover:border-blue-500 transition">
-              {/* Imagem placeholder — substitua o src */}
-              <img
-                src={`https://via.placeholder.com/400x200/1a3a6b/4a8cff?text=${p.name}`}
-                alt={p.name}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-5">
-                <h3 className="font-bold text-white">{p.name}</h3>
-                <p className="text-sm text-blue-300">{p.role}</p>
-                <p className="text-sm text-gray-400 mt-1">{p.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== EDUCATION ===== */}
-      <section className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
-        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Education</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
-            <h3 className="font-bold text-white">Formação em Design</h3>
-            <p className="text-sm text-blue-300">2022 - 2024</p>
-            <p className="text-sm text-gray-400 mt-1">Design visual e identidade de marcas digitais.</p>
-          </div>
-          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
-            <h3 className="font-bold text-white">Desenvolvimento Web</h3>
-            <p className="text-sm text-blue-300">2023</p>
-            <p className="text-sm text-gray-400 mt-1">HTML, CSS, JavaScript e React.</p>
-          </div>
-          <div className="bg-blue-900/10 border border-blue-800/30 rounded-2xl p-6">
-            <h3 className="font-bold text-white">Gestão de Comunidades</h3>
-            <p className="text-sm text-blue-300">2021 - 2024</p>
-            <p className="text-sm text-gray-400 mt-1">Moderação, liderança e organização de eventos.</p>
+    <!-- ===== CERTIFICATES ===== -->
+    <section id="certs">
+      <h2 class="section-title">Certificates</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Moderação Avançada</h3>
+          <p class="issuer">Discord Community</p>
+          <div class="tags">
+            <span>Moderação</span>
+            <span>Gestão de Conflitos</span>
+            <span>Comunidades</span>
           </div>
         </div>
-      </section>
-
-      {/* ===== CONTACT ===== */}
-      <section id="contact" className="max-w-6xl mx-auto px-6 py-20 border-t border-blue-900/30">
-        <h2 className="text-3xl font-bold text-blue-400 border-l-4 border-blue-400 pl-4 mb-10">Contact</h2>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <a href="#" className="bg-blue-900/20 border border-blue-800/30 hover:border-blue-400 px-8 py-3 rounded-full text-sm font-medium transition">📧 E-mail</a>
-          <a href="#" className="bg-blue-900/20 border border-blue-800/30 hover:border-blue-400 px-8 py-3 rounded-full text-sm font-medium transition">💬 Discord</a>
-          <a href="#" className="bg-blue-900/20 border border-blue-800/30 hover:border-blue-400 px-8 py-3 rounded-full text-sm font-medium transition">🐦 Twitter</a>
-          <a href="#" className="bg-blue-900/20 border border-blue-800/30 hover:border-blue-400 px-8 py-3 rounded-full text-sm font-medium transition">📸 Instagram</a>
+        <div class="card">
+          <h3>UI/UX para Comunidades</h3>
+          <p class="issuer">Google</p>
+          <div class="tags">
+            <span>User Research</span>
+            <span>Prototyping</span>
+            <span>Design Systems</span>
+          </div>
         </div>
-        <p className="text-center text-gray-500 text-sm mt-8">
-          © 2026 Yezzy · Feito com 💙
-        </p>
-      </section>
+        <div class="card">
+          <h3>JavaScript & Bots</h3>
+          <p class="issuer">FreeCodeCamp</p>
+          <div class="tags">
+            <span>Node.js</span>
+            <span>Discord.js</span>
+            <span>Automação</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <h3>🎨 Design</h3>
+          <ul>
+            <li>Identidade Visual</li>
+            <li>Banners & Artes</li>
+            <li>UI/UX para Comunidades</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>⚙️ Dev</h3>
+          <ul>
+            <li>Discord.js</li>
+            <li>Node.js</li>
+            <li>Automação de bots</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>👑 Gestão</h3>
+          <ul>
+            <li>Liderança de equipes</li>
+            <li>Organização de eventos</li>
+            <li>Moderação avançada</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="card-grid">
+        <div class="card project-card">
+          <img src="/images/movcall.jpg" alt="Mov Call" onerror="this.src='https://via.placeholder.com/400x160/1a3a6b/4a8cff?text=Mov+Call'" />
+          <div class="info">
+            <h3>Mov Call (Turquia)</h3>
+            <p class="role">Sub-Líder</p>
+            <p class="desc">Coordenação de equipes e estrutura organizacional.</p>
+          </div>
+        </div>
+        <div class="card project-card">
+          <img src="/images/pureza.jpg" alt="Pureza" onerror="this.src='https://via.placeholder.com/400x160/1a3a6b/4a8cff?text=Pureza'" />
+          <div class="info">
+            <h3>Pureza</h3>
+            <p class="role">Eventos & Social</p>
+            <p class="desc">Criação de eventos e gestão do time social.</p>
+          </div>
+        </div>
+        <div class="card project-card">
+          <img src="/images/hayley.jpg" alt="Cidadela da Hayley" onerror="this.src='https://via.placeholder.com/400x160/1a3a6b/4a8cff?text=Cidadela+da+Hayley'" />
+          <div class="info">
+            <h3>Cidadela da Hayley</h3>
+            <p class="role">Aprendiz de Mod & Editora</p>
+            <p class="desc">Moderação, edição e promoção do servidor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section>
+      <h2 class="section-title">Education</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Formação em Design</h3>
+          <p class="issuer">2022 - 2024</p>
+          <p class="desc">Design visual e identidade de marcas digitais.</p>
+        </div>
+        <div class="card">
+          <h3>Desenvolvimento Web</h3>
+          <p class="issuer">2023</p>
+          <p class="desc">HTML, CSS, JavaScript e React.</p>
+        </div>
+        <div class="card">
+          <h3>Gestão de Comunidades</h3>
+          <p class="issuer">2021 - 2024</p>
+          <p class="desc">Moderação, liderança e organização de eventos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-links">
+        <a href="#">📧 E-mail</a>
+        <a href="#">💬 Discord</a>
+        <a href="#">🐦 Twitter</a>
+        <a href="#">📸 Instagram</a>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+      © 2026 Yezzy · Feito com 💙
     </div>
-  );
-}
 
-export default App;
+  </div>
+
+</body>
+</html>
