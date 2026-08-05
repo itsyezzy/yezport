@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yezzy · Portfólio</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a0e1a;
+            color: #e8edf5;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ===== CORES AZUL ===== */
+        :root {
+            --azul-escuro: #0b1a33;
+            --azul-meio: #1a3a6b;
+            --azul-claro: #4a8cff;
+            --azul-brilho: #7ab7ff;
+            --texto-claro: #e0edff;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            border-bottom: 2px solid var(--azul-meio);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--azul-claro), var(--azul-brilho));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        header .tagline {
+            font-size: 1.2rem;
+            color: var(--azul-brilho);
+            margin-top: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        header .selos {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        header .selos span {
+            background: var(--azul-escuro);
+            border: 1px solid var(--azul-meio);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--azul-brilho);
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== SEÇÕES ===== */
+        section {
+            margin: 3.5rem 0;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--azul-claro);
+            border-left: 5px solid var(--azul-claro);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--azul-escuro);
+            border: 1px solid var(--azul-meio);
+            border-radius: 16px;
+            padding: 1.8rem 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--azul-claro);
+        }
+
+        .card h3 {
+            color: var(--azul-brilho);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p,
+        .card li {
+            color: var(--texto-claro);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.5rem;
+        }
+
+        .card ul li::before {
+            content: "▸ ";
+            color: var(--azul-claro);
+            font-weight: bold;
+        }
+
+        /* ===== SOBRE ===== */
+        .sobre-texto {
+            background: var(--azul-escuro);
+            border: 1px solid var(--azul-meio);
+            border-radius: 16px;
+            padding: 2rem;
+            font-size: 1.05rem;
+            color: var(--texto-claro);
+        }
+
+        .sobre-texto strong {
+            color: var(--azul-brilho);
+        }
+
+        /* ===== CONTATO ===== */
+        .contato-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .contato-links a {
+            background: var(--azul-escuro);
+            border: 1px solid var(--azul-meio);
+            border-radius: 40px;
+            padding: 0.8rem 2rem;
+            color: var(--texto-claro);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, border-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contato-links a:hover {
+            background: var(--azul-meio);
+            border-color: var(--azul-claro);
+            color: #fff;
+        }
+
+        .cta-final {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 2px solid var(--azul-meio);
+        }
+
+        .cta-final p {
+            font-size: 1.3rem;
+            color: var(--azul-brilho);
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header .selos span {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.9rem;
+            }
+            section h2 {
+                font-size: 1.5rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== CABEÇALHO ===== -->
+        <header>
+            <h1>Yezzy</h1>
+            <p class="tagline">design · dev · gestão de comunidades</p>
+            <div class="selos">
+                <span>🎨 UI/UX Design</span>
+                <span>⚙️ Bot Developer</span>
+                <span>👑 Community Manager</span>
+            </div>
+        </header>
+
+        <!-- ===== SOBRE ===== -->
+        <section>
+            <h2>👋 Quem sou</h2>
+            <div class="sobre-texto">
+                <p>
+                    Sou <strong>Yezzy</strong>, uma criadora multifacetada que une 
+                    <strong>design visual</strong>, <strong>desenvolvimento de bots</strong> 
+                    e <strong>gestão de comunidades</strong> para transformar servidores 
+                    em ecossistemas vibrantes.
+                </p>
+                <p style="margin-top: 0.8rem;">
+                    Minha experiência vai desde a criação de identidades visuais completas 
+                    até a automação com bots, passando pela organização de times e eventos 
+                    que engajam milhares de pessoas.
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== DESIGN ===== -->
+        <section>
+            <h2>🎨 Design</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Closett &amp; Banners</h3>
+                    <p>
+                        Criação de identidade visual, banners promocionais e 
+                        artes para servidores do zero. Foco em transmitir a 
+                        personalidade da comunidade com cores, tipografia e 
+                        layout estratégico.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Design para Comunidades</h3>
+                    <p>
+                        Desenvolvimento de sistemas visuais completos: 
+                        cargos, emojis personalizados, capas de eventos 
+                        e materiais de divulgação que fortalecem a marca 
+                        do servidor.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DEV ===== -->
+        <section>
+            <h2>⚙️ Desenvolvimento</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Bots em Desenvolvimento</h3>
+                    <p>
+                        Criação de bots para Discord com foco em automação, 
+                        moderação, sistemas de verificação e funções 
+                        interativas que melhoram a experiência dos membros.
+                    </p>
+                    <ul>
+                        <li>Automação de boas-vindas</li>
+                        <li>Sistemas de cargos por reação</li>
+                        <li>Comandos personalizados</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Ferramentas para Gestão</h3>
+                    <p>
+                        Desenvolvimento de soluções sob medida para 
+                        facilitar o trabalho de equipes de moderação e 
+                        administração em servidores de grande porte.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EXPERIÊNCIA (ADMIN) ===== -->
+        <section>
+            <h2>👑 Gestão &amp; Comunidades</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Sub-Líder · Mov Call (Turquia)</h3>
+                    <p>
+                        Atuação na liderança de uma comunidade internacional, 
+                        coordenando equipes e garantindo a organização 
+                        estrutural do servidor.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Eventos, Social e Mov Call · Pureza</h3>
+                    <p>
+                        Criação e execução de eventos, gestão do time 
+                        social e manutenção do fluxo de movimentação 
+                        dentro da comunidade.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Aprendiz de Mod, Editora e Promotora · Cidadela da Hayley</h3>
+                    <p>
+                        Início da trajetória como moderadora, com 
+                        responsabilidades em edição de conteúdos e 
+                        promoção do servidor, aprendendo na prática 
+                        a dinâmica de comunidades ativas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTATO ===== -->
+        <section>
+            <h2>📬 Vamos conversar?</h2>
+            <div class="contato-links">
+                <a href="#">📧 E-mail</a>
+                <a href="#">💬 Discord</a>
+                <a href="#">🐦 Twitter / X</a>
+                <a href="#">📸 Instagram</a>
+            </div>
+            <div class="cta-final">
+                <p>✨ Transformo comunidades em ecossistemas organizados e vibrantes.</p>
+                <p style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.7;">
+                    Design · Dev · Gestão — tudo num só lugar.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
