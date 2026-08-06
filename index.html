@@ -156,7 +156,68 @@
       text-shadow: 0 0 20px rgba(255, 50, 50, 0.15);
     }
 
-    /* ========== ABOUT ========== */
+    /* ========== HOME / HERO ========== */
+    .hero-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .hero-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid var(--vermelho-claro);
+      box-shadow: 0 0 50px rgba(255, 50, 50, 0.25);
+      object-fit: cover;
+      background: var(--vermelho-escuro);
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--vermelho-claro);
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--vermelho-brilho);
+      font-weight: 300;
+      margin: 4px 0 12px;
+    }
+
+    .hero p {
+      color: #c0a8a8;
+      max-width: 480px;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--vermelho-claro);
+      color: #fff;
+      padding: 12px 36px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 20px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 30px rgba(200, 50, 50, 0.3);
+    }
+
+    .btn:hover {
+      background: #aa2222;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 40px rgba(200, 50, 50, 0.5);
+    }
+
+    /* ========== SOBRE (com imagem GRANDE) ========== */
     .about-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -219,7 +280,7 @@
       margin-top: 2px;
     }
 
-    /* ========== LADO DIREITO: IMAGEM + ENGRENAGEM ========== */
+    /* ========== IMAGEM GRANDE COM ENGRENAGEM ========== */
     .about-image {
       display: flex;
       justify-content: center;
@@ -227,19 +288,19 @@
       position: relative;
     }
 
-    .gear-avatar {
+    .gear-avatar-big {
       position: relative;
-      width: 320px;
-      height: 320px;
+      width: 420px;
+      height: 420px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Engrenagem GIRANDO atrás da imagem */
-    .gear-spin {
+    /* Engrenagem GIGANTE girando atrás */
+    .gear-spin-big {
       position: absolute;
-      font-size: 340px;
+      font-size: 480px;
       color: var(--vermelho-claro);
       opacity: 0.2;
       animation: spin 12s linear infinite;
@@ -247,17 +308,17 @@
       pointer-events: none;
     }
 
-    /* PNG da Yezzy por cima */
-    .gear-avatar img {
+    /* PNG GRANDE por cima */
+    .gear-avatar-big img {
       position: relative;
       z-index: 1;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 0 40px rgba(200, 50, 50, 0.2));
+      filter: drop-shadow(0 0 50px rgba(200, 50, 50, 0.25));
     }
 
-    /* ========== OUTRAS SEÇÕES ========== */
+    /* ========== PROJETOS ========== */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -305,6 +366,7 @@
       margin-top: 6px;
     }
 
+    /* ========== SKILLS ========== */
     .skill-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -336,6 +398,7 @@
       margin-top: 4px;
     }
 
+    /* ========== CONTACT ========== */
     .contact-links {
       display: flex;
       flex-wrap: wrap;
@@ -371,6 +434,20 @@
 
     /* ========== RESPONSIVO ========== */
     @media (max-width: 768px) {
+      .hero-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-wrapper .hero-image {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero p {
+        max-width: 100%;
+      }
+
       .about-wrapper {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -380,13 +457,13 @@
         order: -1;
       }
 
-      .gear-avatar {
-        width: 220px;
-        height: 220px;
+      .gear-avatar-big {
+        width: 280px;
+        height: 280px;
       }
 
-      .gear-spin {
-        font-size: 240px;
+      .gear-spin-big {
+        font-size: 320px;
       }
 
       .navbar {
@@ -403,6 +480,10 @@
         font-size: 24px;
       }
 
+      .hero h1 {
+        font-size: 32px;
+      }
+
       .gear-bg {
         font-size: 40px !important;
       }
@@ -415,13 +496,18 @@
     }
 
     @media (max-width: 480px) {
-      .gear-avatar {
-        width: 180px;
-        height: 180px;
+      .gear-avatar-big {
+        width: 220px;
+        height: 220px;
       }
 
-      .gear-spin {
-        font-size: 200px;
+      .gear-spin-big {
+        font-size: 260px;
+      }
+
+      .hero-avatar {
+        width: 150px;
+        height: 150px;
       }
 
       .stats {
@@ -460,32 +546,30 @@
       </ul>
     </nav>
 
-    <!-- ===== HOME / HERO ===== -->
+    <!-- ===== HOME / HERO (com círculo) ===== -->
     <section id="home">
-      <div class="about-wrapper">
-        <div>
-          <h1 style="font-size:44px;font-weight:800;">Yezzy <span style="color:#cc3333;">🔥</span></h1>
-          <p style="font-size:20px;color:#ff5555;font-weight:300;margin:4px 0 12px;">Design · Dev · Community Manager</p>
-          <p style="color:#c0a8a8;max-width:480px;font-size:15px;">
+      <div class="hero-wrapper">
+        <div class="hero">
+          <h1>Yezzy <span>🔥</span></h1>
+          <p class="subtitle">Design · Dev · Community Manager</p>
+          <p>
             Crio identidades visuais, desenvolvo bots e organizo comunidades
             para transformar servidores em ecossistemas vibrantes e funcionais.
           </p>
-          <a href="#contact" style="display:inline-block;background:#cc3333;color:#fff;padding:12px 36px;border-radius:40px;text-decoration:none;font-weight:600;font-size:14px;margin-top:20px;transition:0.3s;box-shadow:0 4px 30px rgba(200,50,50,0.3);">Vamos conversar →</a>
+          <a href="#contact" class="btn">Vamos conversar →</a>
         </div>
-        <div class="about-image">
-          <div class="gear-avatar">
-            <div class="gear-spin">⚙</div>
-            <img
-              src="images/Vivian_Hugo-removebg-preview.png"
-              alt="Yezzy"
-              onerror="this.src='https://via.placeholder.com/400/1a0808/cc3333?text=Yezzy'"
-            />
-          </div>
+        <div class="hero-image">
+          <img
+            src="images/Vivian_Hugo-removebg-preview.png"
+            alt="Yezzy"
+            class="hero-avatar"
+            onerror="this.src='https://via.placeholder.com/200/1a0808/cc3333?text=Yezzy'"
+          />
         </div>
       </div>
     </section>
 
-    <!-- ===== ABOUT (com imagem + engrenagem) ===== -->
+    <!-- ===== SOBRE (com imagem GRANDE + engrenagem) ===== -->
     <section id="about">
       <h2 class="section-title">Sobre Mim</h2>
       <div class="about-wrapper">
@@ -525,14 +609,14 @@
           </div>
         </div>
 
-        <!-- Lado DIREITO: imagem + engrenagem rodando -->
+        <!-- Lado DIREITO: imagem GRANDE + engrenagem GIGANTE -->
         <div class="about-image">
-          <div class="gear-avatar">
-            <div class="gear-spin">⚙</div>
+          <div class="gear-avatar-big">
+            <div class="gear-spin-big">⚙</div>
             <img
-              src="images/Vivian_Hugo-removebg-preview.png"
-              alt="Yezzy"
-              onerror="this.src='https://via.placeholder.com/400/1a0808/cc3333?text=Yezzy'"
+              src="images/VIVIAN_HUGO______FANART-removebg-preview.png"
+              alt="Yezzy Arte"
+              onerror="this.src='https://via.placeholder.com/400/1a0808/cc3333?text=Arte'"
             />
           </div>
         </div>
