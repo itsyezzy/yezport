@@ -22,11 +22,10 @@
       color: #f0e0e0;
       line-height: 1.6;
       overflow-x: hidden;
-      position: relative;
       min-height: 100vh;
     }
 
-    /* ========== ENGRENAGENS DE FUNDO ========== */
+    /* ========== ENGRENAGENS DE FUNDO (SOLTAS) ========== */
     .gears-bg {
       position: fixed;
       top: 0;
@@ -38,7 +37,7 @@
       overflow: hidden;
     }
 
-    .gear {
+    .gear-bg {
       position: absolute;
       font-size: 80px;
       opacity: 0.06;
@@ -46,48 +45,37 @@
       animation: spin 20s linear infinite;
     }
 
-    .gear:nth-child(1) {
+    .gear-bg:nth-child(1) {
       top: 5%;
       left: 5%;
       font-size: 120px;
       animation-duration: 25s;
     }
-
-    .gear:nth-child(2) {
+    .gear-bg:nth-child(2) {
       bottom: 10%;
       right: 5%;
       font-size: 100px;
       animation-duration: 18s;
       animation-direction: reverse;
     }
-
-    .gear:nth-child(3) {
+    .gear-bg:nth-child(3) {
       top: 40%;
       left: 80%;
       font-size: 60px;
       animation-duration: 22s;
     }
-
-    .gear:nth-child(4) {
+    .gear-bg:nth-child(4) {
       bottom: 30%;
       left: 8%;
       font-size: 70px;
       animation-duration: 30s;
       animation-direction: reverse;
     }
-
-    .gear:nth-child(5) {
+    .gear-bg:nth-child(5) {
       top: 70%;
       left: 50%;
       font-size: 50px;
       animation-duration: 15s;
-    }
-
-    .gear:nth-child(6) {
-      top: 15%;
-      left: 45%;
-      font-size: 40px;
-      animation-duration: 28s;
     }
 
     @keyframes spin {
@@ -99,7 +87,7 @@
       }
     }
 
-    /* ========== CONTEÚDO (fica em cima) ========== */
+    /* ========== CONTEÚDO ========== */
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -114,7 +102,6 @@
       --vermelho-meio: #4a1a1a;
       --vermelho-claro: #cc3333;
       --vermelho-brilho: #ff5555;
-      --vermelho-destaque: #ff2222;
     }
 
     /* ========== NAVBAR ========== */
@@ -169,81 +156,21 @@
       text-shadow: 0 0 20px rgba(255, 50, 50, 0.15);
     }
 
-    /* ========== HERO ========== */
-    .hero {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      padding: 40px 0 20px;
-    }
-
-    .hero-avatar {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 4px solid var(--vermelho-claro);
-      box-shadow: 0 0 50px rgba(255, 50, 50, 0.25);
-      object-fit: cover;
-      flex-shrink: 0;
-      background: var(--vermelho-escuro);
-    }
-
-    .hero h1 {
-      font-size: 44px;
-      font-weight: 800;
-    }
-
-    .hero h1 span {
-      color: var(--vermelho-claro);
-    }
-
-    .hero .subtitle {
-      font-size: 20px;
-      color: var(--vermelho-brilho);
-      font-weight: 300;
-      margin: 4px 0 12px;
-    }
-
-    .hero p {
-      color: #c0a8a8;
-      max-width: 480px;
-      font-size: 15px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--vermelho-claro);
-      color: #fff;
-      padding: 12px 36px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      margin-top: 20px;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 4px 30px rgba(200, 50, 50, 0.3);
-    }
-
-    .btn:hover {
-      background: #aa2222;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 40px rgba(200, 50, 50, 0.5);
-    }
-
     /* ========== ABOUT ========== */
-    .about-grid {
+    .about-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 48px;
+      align-items: center;
     }
 
-    .about-grid p {
+    .about-text p {
       color: #c0a8a8;
       font-size: 15px;
+      margin-bottom: 16px;
     }
 
-    .about-grid strong {
+    .about-text strong {
       color: var(--vermelho-brilho);
     }
 
@@ -251,19 +178,19 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 20px;
+      margin-top: 12px;
     }
 
     .stat-box {
       background: rgba(26, 8, 8, 0.7);
       border: 1px solid rgba(200, 50, 50, 0.25);
       border-radius: 14px;
-      padding: 16px;
+      padding: 14px;
       text-align: center;
     }
 
     .stat-box .number {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--vermelho-claro);
     }
@@ -277,22 +204,60 @@
       background: rgba(26, 8, 8, 0.5);
       border: 1px solid rgba(200, 50, 50, 0.2);
       border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 16px;
+      padding: 16px 20px;
+      margin-top: 12px;
     }
 
     .philosophy-box h3 {
       color: var(--vermelho-brilho);
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .philosophy-box p {
       font-size: 14px;
       color: #886868;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
-    /* ========== CARDS ========== */
+    /* ========== LADO DIREITO: IMAGEM + ENGRENAGEM ========== */
+    .about-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .gear-avatar {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Engrenagem GIRANDO atrás da imagem */
+    .gear-spin {
+      position: absolute;
+      font-size: 340px;
+      color: var(--vermelho-claro);
+      opacity: 0.2;
+      animation: spin 12s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* PNG da Yezzy por cima */
+    .gear-avatar img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 40px rgba(200, 50, 50, 0.2));
+    }
+
+    /* ========== OUTRAS SEÇÕES ========== */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -340,7 +305,6 @@
       margin-top: 6px;
     }
 
-    /* ========== SKILLS ========== */
     .skill-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -372,7 +336,6 @@
       margin-top: 4px;
     }
 
-    /* ========== CONTACT ========== */
     .contact-links {
       display: flex;
       flex-wrap: wrap;
@@ -408,17 +371,22 @@
 
     /* ========== RESPONSIVO ========== */
     @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero p {
-        max-width: 100%;
-      }
-
-      .about-grid {
+      .about-wrapper {
         grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about-image {
+        order: -1;
+      }
+
+      .gear-avatar {
+        width: 220px;
+        height: 220px;
+      }
+
+      .gear-spin {
+        font-size: 240px;
       }
 
       .navbar {
@@ -435,36 +403,29 @@
         font-size: 24px;
       }
 
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero-avatar {
-        width: 140px;
-        height: 140px;
-      }
-
-      .gear {
+      .gear-bg {
         font-size: 40px !important;
       }
-
-      .gear:nth-child(1) {
+      .gear-bg:nth-child(1) {
         font-size: 60px !important;
       }
-
-      .gear:nth-child(2) {
+      .gear-bg:nth-child(2) {
         font-size: 50px !important;
       }
     }
 
     @media (max-width: 480px) {
-      .stats {
-        grid-template-columns: 1fr 1fr;
+      .gear-avatar {
+        width: 180px;
+        height: 180px;
       }
 
-      .hero-avatar {
-        width: 120px;
-        height: 120px;
+      .gear-spin {
+        font-size: 200px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
       }
 
       .container {
@@ -475,14 +436,13 @@
 </head>
 <body>
 
-  <!-- ===== ENGRENAGENS RODANDO ===== -->
+  <!-- ===== ENGRENAGENS DE FUNDO ===== -->
   <div class="gears-bg">
-    <div class="gear">⚙</div>
-    <div class="gear">⚙</div>
-    <div class="gear">⚙</div>
-    <div class="gear">⚙</div>
-    <div class="gear">⚙</div>
-    <div class="gear">⚙</div>
+    <div class="gear-bg">⚙</div>
+    <div class="gear-bg">⚙</div>
+    <div class="gear-bg">⚙</div>
+    <div class="gear-bg">⚙</div>
+    <div class="gear-bg">⚙</div>
   </div>
 
   <!-- ===== CONTEÚDO ===== -->
@@ -493,39 +453,44 @@
       <span class="logo">Yezzy</span>
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">Sobre</a></li>
         <li><a href="#projects">Projetos</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Contato</a></li>
       </ul>
     </nav>
 
     <!-- ===== HOME / HERO ===== -->
     <section id="home">
-      <div class="hero">
-        <img
-          src="images/IMG_1970.jpeg"
-          alt="Yezzy"
-          class="hero-avatar"
-          onerror="this.src='https://via.placeholder.com/300/1a0808/cc3333?text=Yezzy'"
-        />
+      <div class="about-wrapper">
         <div>
-          <h1>Yezzy <span>🔥</span></h1>
-          <p class="subtitle">Design · Dev · Community Manager</p>
-          <p>
+          <h1 style="font-size:44px;font-weight:800;">Yezzy <span style="color:#cc3333;">🔥</span></h1>
+          <p style="font-size:20px;color:#ff5555;font-weight:300;margin:4px 0 12px;">Design · Dev · Community Manager</p>
+          <p style="color:#c0a8a8;max-width:480px;font-size:15px;">
             Crio identidades visuais, desenvolvo bots e organizo comunidades
             para transformar servidores em ecossistemas vibrantes e funcionais.
           </p>
-          <a href="#contact" class="btn">Vamos conversar →</a>
+          <a href="#contact" style="display:inline-block;background:#cc3333;color:#fff;padding:12px 36px;border-radius:40px;text-decoration:none;font-weight:600;font-size:14px;margin-top:20px;transition:0.3s;box-shadow:0 4px 30px rgba(200,50,50,0.3);">Vamos conversar →</a>
+        </div>
+        <div class="about-image">
+          <div class="gear-avatar">
+            <div class="gear-spin">⚙</div>
+            <img
+              src="images/Vivian_Hugo-removebg-preview.png"
+              alt="Yezzy"
+              onerror="this.src='https://via.placeholder.com/400/1a0808/cc3333?text=Yezzy'"
+            />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== ABOUT ===== -->
+    <!-- ===== ABOUT (com imagem + engrenagem) ===== -->
     <section id="about">
       <h2 class="section-title">Sobre Mim</h2>
-      <div class="about-grid">
-        <div>
+      <div class="about-wrapper">
+        <!-- Lado ESQUERDO: texto -->
+        <div class="about-text">
           <p>
             Sou <strong>Yezzy</strong>, uma criadora multifacetada que une
             design visual, desenvolvimento de bots e gestão de comunidades.
@@ -538,20 +503,18 @@
               <div class="label">Anos de experiência</div>
             </div>
             <div class="stat-box">
-              <div class="number">10+</div>
-              <div class="label">Projetos</div>
-            </div>
-            <div class="stat-box">
               <div class="number">5+</div>
               <div class="label">Comunidades geridas</div>
+            </div>
+            <div class="stat-box">
+              <div class="number">10+</div>
+              <div class="label">Projetos</div>
             </div>
             <div class="stat-box">
               <div class="number">24/7</div>
               <div class="label">Dedicação</div>
             </div>
           </div>
-        </div>
-        <div>
           <div class="philosophy-box">
             <h3>Minha Filosofia</h3>
             <p>Unir inspiração tradicional com tendências modernas para criar experiências únicas e de alta performance.</p>
@@ -561,45 +524,35 @@
             <p>Transformar ideias complexas em interfaces limpas, responsivas e que encantam os usuários.</p>
           </div>
         </div>
+
+        <!-- Lado DIREITO: imagem + engrenagem rodando -->
+        <div class="about-image">
+          <div class="gear-avatar">
+            <div class="gear-spin">⚙</div>
+            <img
+              src="images/Vivian_Hugo-removebg-preview.png"
+              alt="Yezzy"
+              onerror="this.src='https://via.placeholder.com/400/1a0808/cc3333?text=Yezzy'"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ===== PROJETOS (suas imagens) ===== -->
+    <!-- ===== PROJETOS ===== -->
     <section id="projects">
       <h2 class="section-title">Meus Projetos</h2>
       <div class="card-grid">
         <div class="card">
-          <img
-            src="images/Vivian_Hugo-removebg-preview.png"
-            alt="Projeto 1"
-            onerror="this.src='https://via.placeholder.com/400x220/1a0808/cc3333?text=Projeto+1'"
-          />
-          <div class="info">
-            <h3>Vivian & Hugo</h3>
-            <p class="tag">🎨 Fanart</p>
-            <p class="desc">Ilustração digital com estilo único e traços marcantes.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img
-            src="images/_Hugo_-removebg-preview.png"
-            alt="Projeto 2"
-            onerror="this.src='https://via.placeholder.com/400x220/1a0808/cc3333?text=Projeto+2'"
-          />
+          <img src="images/_Hugo_-removebg-preview.png" alt="Hugo" onerror="this.src='https://via.placeholder.com/400x220/1a0808/cc3333?text=Hugo'" />
           <div class="info">
             <h3>Hugo</h3>
             <p class="tag">🎨 Fanart</p>
             <p class="desc">Personagem com design detalhado e cores vibrantes.</p>
           </div>
         </div>
-
         <div class="card">
-          <img
-            src="images/VIVIAN_HUGO______FANART-removebg-preview.png"
-            alt="Projeto 3"
-            onerror="this.src='https://via.placeholder.com/400x220/1a0808/cc3333?text=Projeto+3'"
-          />
+          <img src="images/VIVIAN_HUGO______FANART-removebg-preview.png" alt="Vivian & Hugo" onerror="this.src='https://via.placeholder.com/400x220/1a0808/cc3333?text=Fanart'" />
           <div class="info">
             <h3>Vivian & Hugo · Fanart</h3>
             <p class="tag">🎨 Fanart</p>
