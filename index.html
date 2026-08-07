@@ -283,6 +283,94 @@
       color: #886868;
       margin-top: 2px;
     }
+        /* ========== SOBRE MIM (PESSOAL) ========== */
+.personal-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: rgba(26, 8, 8, 0.4);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(200, 50, 50, 0.15);
+}
+
+.personal-text p {
+  color: #c0a8a8;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.personal-text strong {
+  color: var(--vermelho-brilho);
+}
+
+.personal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.personal-tags .tag {
+  background: rgba(200, 50, 50, 0.15);
+  border: 1px solid rgba(200, 50, 50, 0.3);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  color: #d0b0b0;
+}
+
+.personal-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personal-photo-placeholder {
+  background: rgba(26, 8, 8, 0.6);
+  border: 2px dashed var(--vermelho-claro);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #886868;
+}
+
+.personal-photo-placeholder span {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.personal-photo-placeholder p {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vermelho-claro);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 768px) {
+  .personal-wrapper {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .personal-tags {
+    justify-content: center;
+  }
+
+  .personal-photo-placeholder {
+    max-width: 150px;
+    height: 150px;
+  }
+}
+
 
     /* ========== IMAGEM GRANDE COM ENGRENAGEM ========== */
     .about-image {
@@ -392,93 +480,6 @@
       font-size: 13px;
       margin-top: 4px;
     }
-    /* ========== SOBRE MIM (PESSOAL) ========== */
-.personal-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
-  align-items: center;
-  background: rgba(26, 8, 8, 0.4);
-  border-radius: 20px;
-  padding: 40px;
-  border: 1px solid rgba(200, 50, 50, 0.15);
-}
-
-.personal-text p {
-  color: #c0a8a8;
-  font-size: 15px;
-  margin-bottom: 16px;
-}
-
-.personal-text strong {
-  color: var(--vermelho-brilho);
-}
-
-.personal-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.personal-tags .tag {
-  background: rgba(200, 50, 50, 0.15);
-  border: 1px solid rgba(200, 50, 50, 0.3);
-  padding: 6px 16px;
-  border-radius: 30px;
-  font-size: 13px;
-  color: #d0b0b0;
-}
-
-.personal-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.personal-photo-placeholder {
-  background: rgba(26, 8, 8, 0.6);
-  border: 2px dashed var(--vermelho-claro);
-  border-radius: 20px;
-  width: 100%;
-  max-width: 200px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #886868;
-}
-
-.personal-photo-placeholder span {
-  font-size: 48px;
-  margin-bottom: 8px;
-}
-
-.personal-photo-placeholder p {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--vermelho-claro);
-}
-
-/* ========== RESPONSIVO ========== */
-@media (max-width: 768px) {
-  .personal-wrapper {
-    grid-template-columns: 1fr;
-    padding: 24px;
-    text-align: center;
-  }
-
-  .personal-tags {
-    justify-content: center;
-  }
-
-  .personal-photo-placeholder {
-    max-width: 150px;
-    height: 150px;
-  }
-}
 
     /* ========== CONTACT ========== */
     .contact-links {
