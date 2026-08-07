@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yezzy · Portfólio</title>
 
-  <!-- FAVICON COM ENGRENAGEM GIRANDO (CORRIGIDO E ALINHADO) -->
+  <!-- FAVICON COM ENGRENAGEM GIRANDO -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cstyle%3E@keyframes spin%7Bfrom%7Btransform:rotate(0deg)%7Dto%7Btransform:rotate(360deg)%7D%7D.gear%7Btransform-origin:50%25 50%25;animation:spin 2.5s linear infinite%7D%3C/style%3E%3Ccircle cx='50' cy='50' r='48' fill='%23cc3333'/%3E%3Ctext class='gear' x='50%25' y='76%25' font-size='64' text-anchor='middle' fill='%23ffffff'%3E%E2%9A%99%3C/text%3E%3C/svg%3E" />
 
   <style>
@@ -29,7 +29,7 @@
       min-height: 100vh;
     }
 
-    /* ========== ENGRENAGENS DE FUNDO (SOLTAS) ========== */
+    /* ========== ENGRENAGENS DE FUNDO ========== */
     .gears-bg {
       position: fixed;
       top: 0;
@@ -184,10 +184,6 @@
       font-weight: 800;
     }
 
-    .hero h1 span {
-      color: var(--vermelho-claro);
-    }
-
     .hero .subtitle {
       font-size: 20px;
       color: var(--vermelho-brilho);
@@ -221,7 +217,7 @@
       box-shadow: 0 6px 40px rgba(200, 50, 50, 0.5);
     }
 
-    /* ========== SOBRE (com imagem GRANDE) ========== */
+    /* ========== SOBRE (PROFISSIONAL) ========== */
     .about-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -283,94 +279,6 @@
       color: #886868;
       margin-top: 2px;
     }
-        /* ========== SOBRE MIM (PESSOAL) ========== */
-.personal-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
-  align-items: center;
-  background: rgba(26, 8, 8, 0.4);
-  border-radius: 20px;
-  padding: 40px;
-  border: 1px solid rgba(200, 50, 50, 0.15);
-}
-
-.personal-text p {
-  color: #c0a8a8;
-  font-size: 15px;
-  margin-bottom: 16px;
-}
-
-.personal-text strong {
-  color: var(--vermelho-brilho);
-}
-
-.personal-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.personal-tags .tag {
-  background: rgba(200, 50, 50, 0.15);
-  border: 1px solid rgba(200, 50, 50, 0.3);
-  padding: 6px 16px;
-  border-radius: 30px;
-  font-size: 13px;
-  color: #d0b0b0;
-}
-
-.personal-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.personal-photo-placeholder {
-  background: rgba(26, 8, 8, 0.6);
-  border: 2px dashed var(--vermelho-claro);
-  border-radius: 20px;
-  width: 100%;
-  max-width: 200px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #886868;
-}
-
-.personal-photo-placeholder span {
-  font-size: 48px;
-  margin-bottom: 8px;
-}
-
-.personal-photo-placeholder p {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--vermelho-claro);
-}
-
-/* ========== RESPONSIVO ========== */
-@media (max-width: 768px) {
-  .personal-wrapper {
-    grid-template-columns: 1fr;
-    padding: 24px;
-    text-align: center;
-  }
-
-  .personal-tags {
-    justify-content: center;
-  }
-
-  .personal-photo-placeholder {
-    max-width: 150px;
-    height: 150px;
-  }
-}
-
 
     /* ========== IMAGEM GRANDE COM ENGRENAGEM ========== */
     .about-image {
@@ -406,6 +314,89 @@
       height: 100%;
       object-fit: contain;
       filter: drop-shadow(0 0 50px rgba(200, 50, 50, 0.25));
+    }
+
+    /* ========== SOBRE MIM (PESSOAL) ========== */
+    .personal-wrapper {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: rgba(26, 8, 8, 0.4);
+      border-radius: 20px;
+      padding: 40px;
+      border: 1px solid rgba(200, 50, 50, 0.15);
+    }
+
+    .personal-text p {
+      color: #c0a8a8;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .personal-text strong {
+      color: var(--vermelho-brilho);
+    }
+
+    .personal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .personal-tags .tag {
+      background: rgba(200, 50, 50, 0.15);
+      border: 1px solid rgba(200, 50, 50, 0.3);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      color: #d0b0b0;
+    }
+
+    .personal-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Estilo pra foto de verdade */
+    .personal-foto {
+      width: 100%;
+      max-width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--vermelho-claro);
+      box-shadow: 0 0 40px rgba(200, 50, 50, 0.25);
+      background: var(--vermelho-escuro);
+    }
+
+    /* Placeholder caso a foto não carregue */
+    .personal-photo-placeholder {
+      background: rgba(26, 8, 8, 0.6);
+      border: 2px dashed var(--vermelho-claro);
+      border-radius: 50%;
+      width: 100%;
+      max-width: 220px;
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #886868;
+    }
+
+    .personal-photo-placeholder span {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
+    .personal-photo-placeholder p {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--vermelho-claro);
     }
 
     /* ========== EXPERIÊNCIA ========== */
@@ -549,6 +540,22 @@
         font-size: 320px;
       }
 
+      .personal-wrapper {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .personal-tags {
+        justify-content: center;
+      }
+
+      .personal-foto,
+      .personal-photo-placeholder {
+        max-width: 180px;
+        height: 180px;
+      }
+
       .navbar {
         flex-direction: column;
         align-items: flex-start;
@@ -600,6 +607,12 @@
       .container {
         padding: 0 16px;
       }
+
+      .personal-foto,
+      .personal-photo-placeholder {
+        max-width: 150px;
+        height: 150px;
+      }
     }
   </style>
 </head>
@@ -623,9 +636,9 @@
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">Sobre</a></li>
+        <li><a href="#personal">Pessoal</a></li>
         <li><a href="#experience">Experiência</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#personal">Pessoal</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
     </nav>
@@ -653,7 +666,7 @@
       </div>
     </section>
 
-    <!-- ===== SOBRE ===== -->
+    <!-- ===== SOBRE (PROFISSIONAL) ===== -->
     <section id="about">
       <h2 class="section-title">Sobre Mim</h2>
       <div class="about-wrapper">
@@ -701,6 +714,47 @@
               onerror="this.src='https://via.placeholder.com/400/1a0808/cc3333?text=Arte'"
             />
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE MIM (PESSOAL) ===== -->
+    <section id="personal">
+      <h2 class="section-title">Sobre Mim · Pessoal</h2>
+      <div class="personal-wrapper">
+        <div class="personal-text">
+          <p>
+            Oi! Eu sou a <strong>Sofia</strong>, mas pode me chamar de <strong>Yezzy ou Sofi</strong> se quiser. 
+            Tenho 16 anos, moro em Portugal, mas sou Afro-Brasileira!
+          </p>
+          <p>
+            Quando não estou liderando comunidades ou programando, você vai me encontrar 
+            mergulhada em <strong>fanarts</strong>, ouvindo música (sempre com fone!) ou 
+            maratonando séries criminais. Ah, e sou viciada em rolinhos de salsicha, sempre voltando da escola compro um.
+          </p>
+          <p>
+            Minha maior motivação é ver as pessoas se conectando e se divertindo em 
+            espaços que ajudei a construir. Acredito que uma comunidade bem cuidada 
+            pode ser o lugar mais incrível do mundo.
+          </p>
+          
+          <div class="personal-tags">
+            <span class="tag">🎨 Fanarts</span>
+            <span class="tag">☕ Café</span>
+            <span class="tag">🎵 Música</span>
+            <span class="tag">📺 Séries</span>
+            <span class="tag">💻 Criadora</span>
+          </div>
+        </div>
+
+        <!-- Lado direito: SUA FOTO -->
+        <div class="personal-image">
+          <img
+            src="images/sua-foto-pessoal.jpg"
+            alt="Sofia - Yezzy"
+            class="personal-foto"
+            onerror="this.src='https://via.placeholder.com/220/1a0808/cc3333?text=Sua+Foto'"
+          />
         </div>
       </div>
     </section>
@@ -759,44 +813,8 @@
           <h3>Gestão</h3>
           <p>Liderança, Eventos, Moderação</p>
         </div>
-        <!-- ===== SOBRE MIM (PESSOAL) ===== -->
-<section id="personal">
-  <h2 class="section-title">Sobre Mim · Pessoal</h2>
-  <div class="personal-wrapper">
-    <div class="personal-text">
-      <p>
-        Oi! Eu sou a <strong>Sofia</strong>, mas pode me chamar de <strong>Yezzy ou Sofi</strong> se quiser. 
-        Tenho 16 anos, moro em Portugal, mas sou Afro-Brasileira!
-      </p>
-      <p>
-        Quando não estou liderando comunidades ou programando, você vai me encontrar 
-        mergulhada em <strong>fanarts</strong>, ouvindo música (sempre com fone!) ou 
-        maratonando séries criminais. Ah, e sou viciada em rolinhos de salsicha, sempre voltando da escola compro um.
-      </p>
-      <p>
-        Minha maior motivação é ver as pessoas se conectando e se divertindo em 
-        espaços que ajudei a construir. Acredito que uma comunidade bem cuidada 
-        pode ser o lugar mais incrível do mundo.
-      </p>
-      
-      <div class="personal-tags">
-        <span class="tag">🎨 Fanarts</span>
-        <span class="tag">☕ Café</span>
-        <span class="tag">🎵 Música</span>
-        <span class="tag">📺 Séries</span>
-        <span class="tag">💻 Criadora</span>
       </div>
-    </div>
-
-    <!-- Lado direito: uma foto sua ou um texto em destaque -->
-    <div class="personal-image">
-      <div class="personal-photo-placeholder">
-        <span>🌟</span>
-        <p>#CriandoMeuMundo</p>
-      </div>
-    </div>
-  </div>
-</section>   
+    </section>
 
     <!-- ===== CONTACT ===== -->
     <section id="contact">
